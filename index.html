@@ -19,7 +19,7 @@
     </script>
     <script src="db.js"></script>
       <script>/*
- AngularJS v1.2.17-build.138+sha.dcd94a2   
+ AngularJS v1.2.17-build.138+sha.dcd94a2
  (c) 2010-2014 Google, Inc. http://angularjs.org
  License: MIT
 */
@@ -277,6 +277,7 @@ app.filter('same', function() {
 
 app.controller('catCtrl', function(){
   var filt = [];
+  this.init = false;
   this.part = [];
   this.result = [];
   this.db = db;
@@ -288,6 +289,7 @@ app.controller('catCtrl', function(){
 
 
   this.changes = function() {
+    this.clear();
     var gender = splitName(this.select.hosp.nomeSci);
     filt = [];
     this.part = [];
@@ -303,12 +305,18 @@ app.controller('catCtrl', function(){
           this.part.push(db[i].part[j]);
         }
       }
-    }
+     }
+   };
+  
+  this.clear = function() {
+    this.init = false;
+    this.empty = false;
+    this.proib = false;
+    this.result = [];
   };
-  
-  
 
   this.search = function() {
+    this.init = true;
     this.base = true;
     this.result = [];
     this.proib = false;
@@ -360,7 +368,9 @@ app.controller('catCtrl', function(){
     {estado: 'Tocantins', UF: 'TO'}
   ];
 
-
+  this.msgFamilias = 'Se a espécie pertencer à uma destas Famílias: "Arecaceae", "Heliconiaceae", "Musaceae",';
+  this.msgFamilias += ' "Pandanaceae", "Strelitziaceae" ou "Zingiberaceae", fazer a consulta para a Espécie e';
+  this.msgFamilias += ' para a Família, ou só para a Família se a espécie não estiver relacionada';
 });
 
 angular.module('select',[]).directive('select', function() {
@@ -412,14 +422,15 @@ label{font-weight:700}
 body{color:#666;font:400 11px/1em verdana,arial,serif;margin:0;padding:0}
 div#resolucao{width:100%}
 div#moldura-topo,div#moldura-topo #topo,div#moldura-topo #topo #identificacao-sistema{background:0 0}
-div#moldura-topo #topo #identificacao-sistema h1{font-size:1.8em}
-div#moldura-topo #topo #identificacao-sistema h2{color:#686868;font-size:1.3em}
+div#moldura-topo #topo #identificacao-sistema h1{font-size:1.8em;margin:20px}
+div#moldura-topo #topo #identificacao-sistema h2{color:#686868;margin:20px;font-size:1.3em}
 div#moldura-navegacao-global,div#moldura-navegacao-global #navegacao-global,div#moldura-topo #topo #dados-login{display:none;visibility:hidden}
 div#corpo{margin:0}
 div#corpo h3{font-size:1.5em;font-weight:400;margin-bottom:20px}
-div#corpo #conteudo{border:0}
-div#corpo #conteudo h4{background:0 0;border-top:1px solid #ccc;font-size:1em;margin-bottom:8px 0 8px 0;padding:10px 0 2px 10px}
-.form-button{display:none}
+div#corpo #conteudo{border:0;border-top:1px solid #6b5a22;border-bottom:1px solid #6b5a22;padding:10px}
+div#corpo #conteudo h3{line-height:1.2}
+div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGtaIv///yH5BAEAAAEALAAAAAAEAAgAAAIJRA4Waey+lAoFADs=) left no-repeat;border-top:1px solid #ccc;font-size:1em;margin-bottom:8px 0 8px 0;padding:10px 0 2px 10px}
+.form-button,form{display:none}
 div#moldura-topo,div#moldura-topo #topo{height:auto}
 div#moldura-topo #topo #identificacao-sistema{height:auto;float:none}}
 a{color:#f93;text-decoration:underline}
@@ -511,6 +522,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
       .back {background: #d3cdb8;}
       .underline {text-decoration: underline;}
       .red {color: #fd0606;}
+      form { border: 1px solid #ccc;}
     </style>
   </head>
   <body ng-controller="catCtrl as cat" >
@@ -531,7 +543,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
         <div id="navegacao-global">
           <p>
             <span><a href="#" ng-click="cat.setBase()">Ver Base de Dados</a></span>
-            <span><a href="#" onclick="window.print()">Imprimir</a></span>
+            <span title="Para o resultado salvar como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como DPF' na página de impressão"><a href="#" onclick="window.print()">Imprimir</a></span>
           </p>
         </div>
       </div>
@@ -541,7 +553,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
         <div id="conteudo">
           <form>  
             <table class="table-form">
-              <tr>
+              <tr title={{cat.msgFamilias}}>
                 <td class="col30"><label>Espécie Vegetal (nome científico):</label></td>
                 <td><select class="italic form-select"
                             ng-model="cat.select.hosp"
@@ -550,7 +562,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
                   <option value=""></option>
                   </select></td>
               </tr>
-              <tr>
+              <tr title={{cat.msgFamilias}}>
                 <td class="col30"><label>Espécie Vegetal (nome vulgar):</label></td>
                 <td><select class="form-select"
                             ng-model="cat.select.hosp" 
@@ -564,7 +576,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
                 <td><select class="form-select"
                             ng-model="cat.select.part" 
                             ng-options="part as part for part in cat.part | orderBy | unique:'part'">
-                  <option value=""></option>
+                  <option value="cat.clear()"></option>
                   </select></td>
               </tr>
               <tr>
@@ -572,7 +584,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
                 <td><select class="form-select"
                             ng-model="cat.select.orig" 
                             ng-options="est.UF as est.estado for est in cat.estados | same:cat.select.dest"
-                            ng-change="">
+                            ng-change="cat.clear()">
                   <option value=""></option>
                   </select></td>
               </tr>
@@ -581,7 +593,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
                 <td><select class="form-select" 
                             ng-model="cat.select.dest" 
                             ng-options="est.UF as est.estado for est in cat.estados | same:cat.select.orig"
-                            ng-change="">
+                            ng-change="cat.clear()">
                   <option value=""></option>
                   </select></td>
               </tr>
@@ -591,8 +603,8 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
               </tr>
             </table>
           </form>
-
-          <h3>Exigências Fitossanitárias:</h3>
+          <br>
+          <h3 ng-show=cat.init>Exigências Fitossanitárias para o trânsito de {{cat.select.part}} de {{cat.select.hosp.nomeVul}} <i>({{cat.select.hosp.nomeSci}})</i> do {{cat.select.orig}} para {{cat.select.dest}}</h3>
           <div ng-repeat="item in cat.result track by $index" ng-hide="cat.proib">
             <hr>
             <h4><i>{{item.prag}}</i> - {{item.pragc}} - <a target="_blank" ng-href="{{item.link}}">{{item.leg}}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
@@ -619,14 +631,6 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
           <h5><a target="_blank" href="leg/IN59-2013.pdf">Instrução Normativa MAPA Nº 59, de 18 de dezembro de 2013</a></h5>
           <span class="small">No trânsito interno na Importação é exigida a Cópia autenticada do Certificado Fitossanitário - CF ou do Certificado Fitossanitário de Reexportação - CFR; e o Termo de Fiscalização - TF, ou cópia autenticada, emitido pelo Serviço de Vigilância Agropecuária do MAPA, do ponto de ingresso da partida</span>
 
-
-<!--
-          <table class="line"><tr>
-            <td></td>
-            <td class="center"><button ng-click="cat.setBase()" class="form-button">Ver Base de Dados</button></td>
-            <td class="center"><button onclick="window.print()" class="form-button">Imprimir</button></td>
-          </tr></table>
--->
           
           <div ng-hide="cat.base">
             <br>
@@ -686,3 +690,4 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
 
   </body>
 </html>
+
