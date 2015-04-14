@@ -598,7 +598,7 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
                   </select></td>
               </tr>
               <tr>
-                <td class="col30"><a target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={{cat.select.hosp.nomeSci}}">Fotos da Espécie Vegetal</a></td>
+                <td class="col30"><a target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={{cat.select.hosp.nomeSci}}+plant+OR+planta">Fotos da Espécie Vegetal</a></td>
                 <td align="center"><button ng-click="cat.search()" class="form-button">Pesquisar</button><br></td>
               </tr>
             </table>
@@ -624,12 +624,21 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
             <!--          <span>{{cat.proibExig}}</span><BR>-->
             <span class="empty"><div>{{cat.emp}}</div></span>
           </div>
-          <br>
           <hr>
+          <h4>Trânsito Internacional</h4>
+            <div style="margin:6px;">
+            <span>1 - Partida importada, ainda não liberada pelo MAPA, em trânsito a um Porto Seco: Certificado Fitossanitário (normal ou de reexportação).
+            </span>
+            </div>
+            <div style="margin:6px;">
+            <span>2 - Partida importada, já liberada pelo MAPA, trânsito ao destino final: cópia autenticada do Certificado Fitossanitário (normal ou de reexportação) e original ou cópia autenticada do Termo de Fiscalização emitido pelo MAPA. 
+            </span>
+            </div>
+            <hr>
           <h4>Legislação Geral</h4>
           <h5><a target="_blank" href="leg/IN54-2007.pdf">Instrução Normativa MAPA Nº 54, de 4 de dezembro de 2007</a></h5>
           <h5><a target="_blank" href="leg/IN59-2013.pdf">Instrução Normativa MAPA Nº 59, de 18 de dezembro de 2013</a></h5>
-          <span class="small">No trânsito interno na Importação é exigida a Cópia autenticada do Certificado Fitossanitário - CF ou do Certificado Fitossanitário de Reexportação - CFR; e o Termo de Fiscalização - TF, ou cópia autenticada, emitido pelo Serviço de Vigilância Agropecuária do MAPA, do ponto de ingresso da partida</span>
+          <!--<span class="small">No trânsito interno na Importação é exigida a Cópia autenticada do Certificado Fitossanitário - CF ou do Certificado Fitossanitário de Reexportação - CFR; e o Termo de Fiscalização - TF, ou cópia autenticada, emitido pelo Serviço de Vigilância Agropecuária do MAPA, do ponto de ingresso da partida</span>-->
 
           
           <div ng-hide="cat.base">
@@ -690,4 +699,3 @@ div#corpo #conteudo h4{background:url(data:image/gif;base64,R0lGODlhBAAIAIABAGta
 
   </body>
 </html>
-
