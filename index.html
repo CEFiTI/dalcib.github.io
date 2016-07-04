@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,12 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>CEFiTI</title>
 <!--    <title>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</title>-->
-    <script>
-      Array.prototype.indexOf||(Array.prototype.indexOf=function(r,t){var n;if(null==this)throw new TypeError('"this" is null or not defined');var e=Object(this),i=e.length>>>0;if(0===i)return-1;var a=+t||0;if(1/0===Math.abs(a)&&(a=0),a>=i)return-1;for(n=Math.max(a>=0?a:i-Math.abs(a),0);i>n;){if(n in e&&e[n]===r)return n;n++}return-1});
-    </script>
-    <!-- smoosh -->
-      <script src="angular.min.js"></script>
-    <!-- build:js -->
+
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,14 +16,6 @@
         ga('create', 'UA-60679065-1', 'auto');
         ga('send', 'pageview');
       </script>
-      <script src="db.js"></script>
-      <script src="app.js"></script>
-    <!-- endbuild -->
-    <!-- endsmoosh -->
-    <!-- <link rel="shortcut icon" href="/imagens/favicon.ico" type="image/x-icon" /> -->
-    <!-- smoosh -->
-    <!-- build:css -->
-<!--    <link rel="stylesheet" type="text/css" href="css/estilo.css" />-->
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-template.css"></link>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-menu.css"></link>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-tabela.css"></link>
@@ -36,312 +23,16 @@
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-link.css"></link>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-abas.css"></link>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-impressao.css"></link>
-<!--    <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-menu-dinamico.css">-->
-    <!-- endbuild -->
-    <!-- endsmoosh -->
-    <style>
-      #corpo {font-size :1.0em;}
-      div#moldura-topo #topo #identificacao-sistema h1 {font-size :2em;}
-      div#moldura-topo #topo #identificacao-sistema h2 {font-size  :1.5em;}
-      /*p { margin:0; padding:0; }*/
-      /*h3, h4, h5 { margin: 2px;}*/
-      span {white-space: pre-line;}
-      table {
-        table-layout: fixed;
-        width: 100%;
-      }
-      table td {
-        word-wrap: break-word;         
-        overflow-wrap: break-word; 
-        white-space: pre-line;
-      }
-      .italic {font-style: italic}
-      .small {font-size: 10px;}
-      .col30 {width: 30%;}
-      hr {margin-bottom: 1px solid #ccc;}
-      .center {text-align:center;}
-      .right {text-align:right ;}
-      .left {text-align:left ;}
-      .alert {
-        text-align:center;
-        font-size: 2em;
-        color: #fd0606;
-        font-weight:bold;
-      }
-      .empty {
-        text-align:center;
-        font-size: 2em;
-        color: green;
-        font-weight:bold;
-      }
-      .line {
-        border-top: 1px solid #ccc;
-        padding-top: 5px;
-        margin-top: 5px;
-      }
-      .table-grid th, tr.linha-alternada {
-        background	:#e3e3e3;
-      }
-      p.small {line-height: 80%;}
-      /*.table-list tr {
-        border-top: 5px;
-        white-space: normal;
-      }
-      .table-list span {
-        list-style-type: disc;      
-      }*/
-      .ul-exig { white-space: normal;}
-      .ul-exig li {margin-top: 5px; }
-      .textarea-exig {
-        width: 100%;
-        height: 100%;
-      }
-      .pointer {cursor: pointer;}
-      .back {background: #d3cdb8;}
-      .underline {text-decoration: underline;}
-      .red {color: #fd0606;}
-      form { border: 1px solid #ccc;}
-      div#moldura-navegacao-global #navegacao-global {padding: 0px; border:0px; margin: 0px;}
-      @media print {    
-          .no-print, .no-print *  { display: none !important; }
-          #corpo {font-size :1.2em;}
-          div#corpo #conteudo h4, div#corpo #conteudo h4 *, div#corpo #conteudo h4 i, div#corpo #conteudo h4 a {  
-            background    :url(http://sistemasweb.agricultura.gov.br/styles_java/img/blt-subtitulo.gif) left no-repeat !important;
-            border-bottom :1px solid #ccc;
-            font-size     :1.2em;
-            margin-bottom :15px;
-            margin-top    :5px;
-            padding       :0 0 5px 10px;
-            line-height   :100%;}
-          div#moldura-topo {
-            background    :none;
-            border-bottom :2px solid black;
-            height        :60px;	
-            margin-bottom :20px;
-            padding       :0 0 25px 0px;
-          }
-          div#moldura-topo #topo #identificacao-sistema h1 { margin :0 0 10px 3px; }
-          div#moldura-topo #topo #identificacao-sistema h2 { margin :0 0 10px 3px; }
-          span {line-height   :120%;}
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="app.css"></link>
   </head>
-  <body ng-controller="catCtrl as cat" >
+ <body >
+      <div id="app"/>
 
-    <div id="resolucao">
-      <div id="moldura-topo">
-        <div id="topo">
-          <div id="identificacao-ministerio">
-            <span>
-              <div id="imagemGov"><a href="http://www.brasil.gov.br" target="_blank" id="brasilgov"></a></div>
-            </span>
-            <!--<div id="logomarca-governo-federal"></div>-->
-          </div>
-          <div id="identificacao-sistema" style="float:none">
-            <br>
-            <div style="float:right;color:#fff;padding:5px 10px 5px 15px;">Versão 0.9.1</div>
-            <h1>CEFiTI</h1>
-            <div style="float:right;color:#fff;padding:5px 10px 5px 15px;">Data: {{cat.date | date:'dd/MM/yyyy'}}</div>
-            <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>   
-          </div>
-          <div id="dados-login"></div>
-        </div>
-      </div>
-      <div id="moldura-navegacao-global">
-        <div id="navegacao-global">
-          <p>
-            <span><a href="#" ng-click="cat.setBase()">Ver Base de Dados</a></span>
-            <span><a href="#" ng-click="cat.setMap()"><span ng-show="cat.map">Ver</span><span ng-show="!cat.map">Fechar</span> Mapa de Área Livre</a></span>
-            <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão"><a href="#" onclick="window.print()">Imprimir</a></span>
-            <span style="float:right;color:#fff;padding:5px 10px 5px 15px;">Para baixar o Sistema: CTRL + S </span>
-          </p>
-        </div>
-      </div>
-
-      
-      
-      
-<!--      <div id="moldura-navegacao-global">
-        <div id="menu-dinamico" class="menu-dinamico">
-          <ul>
-            <li><a href="#" ng-click="cat.setBase()">Ver Base de Dados</a></li>
-            <li><a href="#" ng-click="cat.setMap()">Ver Mapa de Área Livre</a></li>
-            <li title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão"><a href="#" onclick="window.print()">Imprimir</a></li>
-            <li style="float:right;color:#fff;padding:5px 10px 5px 15px;">Para baixar o Sistema: CTRL + S </li>
-          </ul>
-        </div>
-      </div>-->
-      
-      
-
-      <div id="corpo">
-        <div id="conteudo" >
-          <div class="center"><img src="moko_sigatoka_s.png" ng-hide="cat.map" width="60%"></div>
-          
-          <form>  
-            <table class="table-form no-print">
-              <tr title={{cat.msgFamilias}}>
-                <td class="col30"><label>Espécie Vegetal (nome científico):</label></td>
-                <td><select title="Se a espécie vegetal não constar destas duas listas, descubra a família da espécie vegetal.
-Se a família for Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, consulte, novamente, uma das duas listas pelo nome da família.
-Se a espécie vegetal ou a família da espécie vegetal não constar da lista consultada, então não há nenhuma exigência fitossanitária para o trânsito nacional da planta ou do produto vegetal."
-                            class="italic form-select"
-                            ng-model="cat.select.hosp"
-                            ng-options="hosp as hosp.nomeSci for hosp in cat.hospedeiros | orderBy:'nomeSci' | unique:cat.select.hosp"
-                            ng-change="cat.changes()">
-                  <option value=""></option>
-                  </select></td>
-              </tr>
-              <tr title={{cat.msgFamilias}}>
-                <td class="col30"><label>Espécie Vegetal (nome vulgar):</label></td>
-                <td><select title="Se a espécie vegetal não constar destas duas listas, descubra a família da espécie vegetal.
-Se a família for Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, consulte, novamente, uma das duas listas pelo nome da família.
-Se a espécie vegetal ou a família da espécie vegetal não constar da lista consultada, então não há nenhuma exigência fitossanitária para o trânsito nacional da planta ou do produto vegetal."
-                            class="form-select"
-                            ng-model="cat.select.hosp" 
-                            ng-options="hosp as hosp.nomeVul for hosp in cat.hospedeiros | orderBy:normalizedName:'nomeVul'"
-                            ng-change="cat.changes()">
-                  <option value=""></option>
-                  </select></td>
-              </tr>
-              <tr>
-                <td class="col30"><label>Parte da Planta:</label></td>
-                <td><select class="form-select"
-                            ng-model="cat.select.part" 
-                            ng-options="part as part for part in cat.part | orderBy | unique:'part'">
-                  <option value="cat.clear()"></option>
-                  </select></td>
-              </tr>
-              <tr>
-                <td class="col30"><label>Origem:</label></td>
-                <td><select class="form-select"
-                            ng-model="cat.select.orig" 
-                            ng-options="est.UF as est.estado for est in cat.estados | same:cat.select.dest"
-                            ng-change="cat.clear()">
-                  <option value=""></option>
-                  </select></td>
-              </tr>
-              <tr>
-                <td class="col30"><label>Destino:</label></td>
-                <td><select class="form-select" 
-                            ng-model="cat.select.dest" 
-                            ng-options="est.UF as est.estado for est in cat.estados | same:cat.select.orig"
-                            ng-change="cat.clear()">
-                  <option value=""></option>
-                  </select></td>
-              </tr>
-              <tr>
-                <td class="col30"><a target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={{cat.select.hosp.nomeSci}}+plant+OR+planta">Fotos da Espécie Vegetal</a></td>
-                <td align="center"><button ng-click="cat.search()" class="form-button">Pesquisar</button><br></td>
-              </tr>
-            </table>
-          </form>
-          <p class="center no-print">Se a espécie vegetal ou a parte da planta buscada não constar das respectivas listas, e a espécie não pertencer às famílias Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, então conclui-se que não há nenhuma exigência fitossanitária para o trânsito interestadual</p>
-          <br>
-          <h3 ng-show=cat.init>Exigências Fitossanitárias para o trânsito de {{cat.select.part}} de {{cat.select.hosp.nomeVul}} <i>({{cat.select.hosp.nomeSci}})</i> do {{cat.select.orig}} para {{cat.select.dest}}</h3>
-          <div ng-repeat="item in cat.result track by $index" ng-hide="cat.proib">
-            <hr>
-            <h4 class="h4"><i>{{item.prag}}</i> - {{item.pragc}}</h4> <a target="_blank" ng-href="{{item.link}}">{{item.leg}}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
-              <a class="small" target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={{item.prag}}">[FOTOS DA PRAGA]</a> 
-            <br>
-            <br>
-            <span class="small underline">{{item.desc}}</span>
-            <div ng-repeat="exig in item.exig" style="margin:6px;">
-              <span title="De: {{item.orig}} para {{item.dest}}">{{$index+1}} - {{exig}}</span>
-            </div>
-          </div>
-          <div ng-show="cat.proib">
-            <h4><i>{{cat.proibPrag}}</i> - {{cat.proibPragc}} - <a target="_blank" ng-href="{{cat.proibLink}}">{{cat.proibLeg}}</a></h4>
-            <!--          <span>{{cat.proibExig}}</span><BR>-->
-            <span class="alert"><div>{{cat.tp}}</div></span>
-          </div>
-          <div ng-show="cat.empty">
-            <!--          <span>{{cat.proibExig}}</span><BR>-->
-            <span class="empty"><div>{{cat.emp}}</div></span>
-          </div>
-          <div ng-hide="!cat.init">
-            <hr>
-            <h4 class="h4">TRÂNSITO INTERNACIONAL PELO TERRITÓRIO NACIONAL</h4>
-              <div style="margin:6px;">
-              <!--<span>1 - Partida importada, ainda não liberada pelo MAPA, em trânsito a um Porto Seco: Certificado Fitossanitário (normal ou de reexportação).
-              </span>-->
-              <span>1 – SE A PARTIDA IMPORTADA, AINDA NÃO FOI LIBERADA PELO MAPA, E ESTÁ EM TRÂNSITO A UM PORTO SECO (ÁREA ALFANDEGADA NO INTERIOR DO PAÍS): 
-  - Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação; 
-
-              </span>
-              </div>
-              <div style="margin:6px;">
-              <!--<span>2 - Partida importada, já liberada pelo MAPA, trânsito ao destino final: cópia autenticada do Certificado Fitossanitário (normal ou de reexportação) e original ou cópia autenticada do Termo de Fiscalização emitido pelo MAPA. 
-              </span>-->
-              <span>2 – SE A PARTIDA IMPORTADA JÁ FOI LIBERADA PELO MAPA, E ESTÁ EM TRÂNSITO AO DESTINO FINAL: 
-  - cópia autenticada do Certificado Fitossanitário ou do Certificado Fitossanitário de Reexportação;
-  - original ou cópia autenticada do Termo de Fiscalização, emitido pelo MAPA. 
-              </span>
-              </div>
-              <hr>
-            <h4 class="h4">LEGISLAÇÃO GERAL</h4>
-            <a target="_blank" href="leg/IN54-2007.pdf">Instrução Normativa MAPA Nº 54, de 4 de dezembro de 2007</a><br><br>
-            <a target="_blank" href="leg/IN59-2013.pdf">Instrução Normativa MAPA Nº 59, de 18 de dezembro de 2013</a>
-            <!--<span class="small">No trânsito interno na Importação é exigida a Cópia autenticada do Certificado Fitossanitário - CF ou do Certificado Fitossanitário de Reexportação - CFR; e o Termo de Fiscalização - TF, ou cópia autenticada, emitido pelo Serviço de Vigilância Agropecuária do MAPA, do ponto de ingresso da partida</span>-->
-          </div>
-
-          
-          <div ng-hide="cat.base">
-            <br>
-            <table tyle="width: 100%;" class="table-grid">
-              <caption>Exigências</caption>
-              <thead>
-                <tr>
-                  <th style="width: 10%;">Descrição</th>
-                  <th style="width: 20%;">Hospedeiro</th>
-                  <th style="width: 10%;">Partida</th>
-                  <th style="width: 10%;">Origem</th>
-                  <th style="width: 10%;">Destino</th>
-
-                  <th style="width: 15%;">Legislação</th>
-                  <th style="width: 30%;">Exigências</th>
-                  <th style="width: 5%;">Trânsito Proibido</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="item in cat.db track by $index" ng-class-even="'linha-alternada'">
-
-                  <td style="width: 10%;"><span>{{item.desc}}</span></td>
-                  <td style="width: 20%;" class="italic"><span>{{item.hosp.toString()}}</span></td>
-                  <td style="width: 10%;"><span>{{item.part.toString()}}</span></td>
-                  <td style="width: 10%;"><span>{{item.orig.toString()}}</span></td>
-                  <td style="width: 10%;"><span>{{item.dest.toString()}}</span></td>
-                  <td style="width: 15%;">
-                    <a target="_blank" ng-href="{{item.link}}">{{item.leg}}</a><br><br>
-                    <span>{{item.pragc}}</span><br><br>
-                    <span class="italic">{{item.prag}}</span>
-                  </td>
-                  <td style="width: 30%;">
-                    <div ng-repeat="exig in item.exig track by $index" style="margin:6px;"><span>{{$index+1}} - {{exig}}</span></div>
-                  </td>
-                  <td style="width: 5%;" align="center"><input type="checkbox" onclick="return false;" ng-model="item.proib"></td>
-                </tr>
-              </tbody>
-              <tfoot class="form-barra-botoes"><tr><td></td></tr></tfoot>
-            </table>
-          </div>
-        </div>
-        <br>
-        <p class="small red center ">
-          Este Sistema está em fase de HOMOLOGAÇÃO, devido a isso as informações obtidas devem ser verificadas na legislação pertinente. 
-        </p>
-        <p class="small red center ">
-          Se for encontrada alguma informação que não reflita corretamente a legislação, favor informar o SSV-MT no e-mail abaixo.
-        </p>
-        <br>
-        <p class="small center">
-          As informações apresentadas não substituem o texto legal vigente, publicado em Diário Oficial da União, e referem-se a requisitos fitossanitários, não dispensando outras exigências estabelecidas em normas específicas. No caso de interceptação de praga, serão adotados os procedimentos constantes do Decreto 24.114, de 12 de abril de 1934. Quando se tratar de material de multiplicação ou propagação vegetaldeverá ser obaservada a Legislação de Sementes e Mudas.
-        </p>
-        <br>
-        <div ><h5 class="center">Desenvolvido pelo SSV-MT - <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a></h5></div>
-      </div>
-    </div>
-
-  </body>
+      <script src="react.min.js"></script>
+      <script src="react-dom.min.js"></script>
+      <script src="mobx.umd.min.js"></script>
+      <script src="db.js"></script>
+      <script src="bundle.js"></script>
+</body>
   
 </html>
