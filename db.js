@@ -1,7 +1,7 @@
 // CEFiTI db
 "use strict";
 
-var version = "9";
+var version = "12";
 
 var db = [
   
@@ -479,55 +479,18 @@ var db = [
   link: "leg/IN17-2005.pdf",
   proib: false
 }, {
-  desc: "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",  //ok
+  desc: "DE área com ocorrência de Sigatoka Negra PARA demais áreas", 
   hosp: ["Musa spp.", "Heliconia spp."],
   part: ["frutos", "flores"],
   orig: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-  dest: ["AL", "CE", "DF", "GO", "PB", "PE", "PI", "RN", "SE"],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Mycosphaerella fijiensis",
   pragc: "SIGATOKA NEGRA",
   exig: [
     "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
     "As bananas não podem transitar em cacho, em todo o território nacional;",
     "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-    "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-    "Caso a UF de destino seja MG ou MS, estas exigências só se aplicam a partida destinada a município livre de Sigatoka Negra: \n\n5.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n5.2-  Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;"
-  ],
-  leg: "Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005",
-  link: "leg/IN17-2005.pdf",
-  proib: false
-}, {
-  desc: "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",  //ok
-  hosp: ["Musa spp.", "Heliconia spp."],
-  part: ["frutos", "flores"],
-  orig: ["AC", "AM", "AP", "MA", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-  dest: ["MG"],
-  prag: "Mycosphaerella fijiensis",
-  pragc: "SIGATOKA NEGRA",
-  exig: [
-    "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
-    "As bananas não podem transitar em cacho, em todo o território nacional;",
-    "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-    "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-    "Estas exigências só se aplicam a partida destinada a municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo;"
-  ],
-  leg: "Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005",
-  link: "leg/IN17-2005.pdf",
-  proib: false
-}, {
-  desc: "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra",  //ok
-  hosp: ["Musa spp.", "Heliconia spp."],
-  part: ["frutos", "flores"],
-  orig: ["AC", "AM", "AP", "MA", "MG", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-  dest: ["MS"],
-  prag: "Mycosphaerella fijiensis",
-  pragc: "SIGATOKA NEGRA",
-  exig: [
-    "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
-    "As bananas não podem transitar em cacho, em todo o território nacional;",
-    "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
-    "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
-    "Estas exigências só se aplicam a partida destinada a municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;"
+    "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"    
   ],
   leg: "Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005",
   link: "leg/IN17-2005.pdf",
@@ -688,11 +651,17 @@ var db = [
 },  
 
 //CANCRO CÍTRICO
+/*
+Área com Praga Ausente: BA, GO, TO
+Área sob Erradicação ou Supressão : MG, RR
+Área sob Sistema de Mitigação de Risco (SMR): MT,. MS, RS, SP
+Área Livre: PA (Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha, Santarém)
+*/
 {
   desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
-  part: ["Frutos", "Material de propagação"],
-  orig: [""],
+  part: ["frutos", "material de propagação"],
+  orig: ["BA", "GO", "TO"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -705,20 +674,23 @@ var db = [
 }, {
   desc: "DE Área Livre de Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
-  part: ["Frutos", "Material de propagação"],
-  orig: [""],
+  part: ["frutos", "material de propagação"],
+  orig: ["PA"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
-  exig: ["PTV."],
+  exig: [
+    "Se a partida for proveniente de Áreas Livres de Canco Cítrico do Estado do Pará, compostas pelo municípios Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha e Santarém: PTV.",
+    "Se a partida for proveniente dos demais municípios que não fazem parte das Áreas Livres de Cancro Cítrico: TRÂNSITO PROIBIDO"
+    ],
   leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
-  link: "leg/IN37-016.pdf",
+  link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",
+  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF", //Arts. 39 e 40
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
-  part: ["Frutos"],
-  orig: [""],
+  part: ["frutos"],
+  orig: ["MG", "RR"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -730,10 +702,10 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",
+  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
-  part: ["Material de propagação"],
-  orig: [""],
+  part: ["material de propagação"],
+  orig: ["MG", "RR"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -744,10 +716,10 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+  desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
-  part: ["Frutos"],
-  orig: [""],
+  part: ["frutos"],
+  orig: ["MT", "MS", "RS", "SP", "SC"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -762,8 +734,8 @@ var db = [
 }, {
   desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
-  part: ["Frutos", "Material de propagação"],
-  orig: [""],
+  part: ["frutos", "material de propagação"],
+  orig: ["AC", "AL", "AM", "AP", "CE", "DF", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -1133,4 +1105,15 @@ TRÂNSITO NACIONAL DE PARTIDA IMPORTADA
 TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
   1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:
       - Certificado Fitossanitário.
+*/
+
+/*
+#MUDANÇAS DE VERSÃO: 
+
+##Versão 11:
+- Alterou a regra de Sigatoka Negra excluindo as regras de "DE área de ocorrência PARA área livre de Sigatoka", substituindo a regra para "DE área de ocorrência de Sigatoka Negra PARA demais áreas", para atender ao art. 2º, VI, da IN nº 17/2007  
+
+##Versão 12:
+- Cancro Cítrico: Santa Catarina passa de Área de Risco Desconhecido para Área sob Mitigação de Risco, conforme a Resolução 12/2017
+
 */
