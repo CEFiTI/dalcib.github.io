@@ -1,7 +1,11 @@
 // CEFiTI db
 'use strict'
 
-var version = '15'
+var version = '17'
+
+if (typeof module === 'object') {
+  exports.version = vsersion
+}
 
 /**
  * === REGRAS PARA EDIÇÃO ===
@@ -14,7 +18,40 @@ var version = '15'
  * 7 - Cada regra deve ter seus campos agrupados dentro de chaves ({...}), e separado de outras regras por uma vírgula.  
  */
 
+/*
+#MUDANÇAS DE VERSÃO: 
+
+##Versão 11:
+- Alterou a regra de Sigatoka Negra excluindo as regras de "DE área de ocorrência PARA área livre de Sigatoka", substituindo a regra para "DE área de ocorrência de Sigatoka Negra PARA demais áreas", para atender ao art. 2º, VI, da IN nº 17/2007  
+
+##Versão 12:
+- Cancro Cítrico: Santa Catarina passa de Área de Risco Desconhecido para Área sob Mitigação de Risco, conforme a Resolução 12/2017
+
+##Versão 13:
+- Alteração do status fitossanitário dos Estados Bahia, Ceará, Goiás, Minas Gerais, Pará, Paraná, Rio Grande do Norte, São Paulo, Sergipe e no Distrito Federal, de ausente para presente da praga Ácaro Vermelho ('Raoiella indica'), conforme processo SEI 21000.022348/2017-84.
+
+##Versão 14:
+- Alteração da regra "DE área com ocorrência de Sigatoka Negra PARA demais áreas" para "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra", pois estava havendo sobreposição com a regra "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra". Por exemplo, frutos de banana de RO pa MT gerava dois requisitos: "sem PTV"" e "PTV com SMR", gerando dúvida fiscal em qual aplicar. Com a modificação "PTV com SMR" será exigido apenas para ALP, sendo para as demais áreas com ocorrência "transito livre sem PTV", ressalvada o trânsito por ALP.
+
+##Versão 15
+- Correção na regra  "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra" para incluir o SMR como opção.
+
+##Versão 16:
+- Inclusão da regra para Cancro Cítrico "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF" para material de propagação, sendo o trânsito proibido.
+- Amazonas e Distrito Federal passam de Área de Risco Desconhecido de Cancro Cítrico para Área com Ausência de Praga, conforme as Resoluções 14/2017 e 15/2017.
+- Ceará passa de Área de Risco Desconhecido de Cancro Cítrico para Área sob Erradicação ou Supressão, conforme a Resolução 13/2017.
+- DE Área com Cancro Cítrico Ausente PARA qualquer UF teve a exigência alterada de PTV para SEM EXIGÊNCIAS PARA O TRÂNSITO.
+
+##Versão 17
+- Unificação das regras para Ácaro Indu para frutos de citros e outros hospedeiros ( a regra existente estava sendo aplicada a todas as partes da planta e não apenas a frutos de citros)
+- Separação e normalização da base de dados em três arquivos: Pragas, Hospedeiros e Regras, para evitar repetição de dados e facilitar a manutenção.
+- Implementação da possibilidade de acrescentar mais de um arquivo PED de legislação por praga
+- Inclusão do arquivo PDF do Ofício Circular 15/2017 de Ácaro Vermelho
+
+*/
+
 // prettier-ignore
+/*
 var db = [
 
   //ÁCARO-VERMELHO-DAS-PALMEIRAS
@@ -54,24 +91,9 @@ var db = [
   },
 
   //ÁCARO HINDU
-  {
+{
     desc: "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
-    hosp: ["Citrus spp."],
-    part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
-    orig: ["RR"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Schizotetranychus hindustanicus",
-    pragc: "ÁCARO HINDU",
-    exig: [
-      "PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
-      "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
-    ],
-    leg: "Instrução Normativa MAPA nº 8, de 17 de abril de 2012",
-    link: "leg/IN08-2012.pdf",
-    proib: false
-  }, {
-    desc: "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
-    hosp: ["Cocos nucifera", "Azadirachta indica", "Sorghum bicolor", "Acacia sp.", "Melia azedarach"],
+    hosp: ["Cocos nucifera", "Azadirachta indica", "Sorghum bicolor", "Acacia sp.", "Melia azedarach", "Citrus spp."],
     part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
     orig: ["RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
@@ -79,6 +101,7 @@ var db = [
     pragc: "ÁCARO HINDU",
     exig: [
       "TRÂNSITO PROIBIDO.\nMotivo: Ausência de área livre de ácaro-hindu-dos-citros, na origem da partida.",
+      "Para  frutos de Citrus spp. o trânsito é permitido com PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
       "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
     ],
     leg: "Instrução Normativa MAPA nº 8, de 17 de abril de 2012",
@@ -343,7 +366,7 @@ var db = [
     proib: false
   }, {
     desc: "DE área livre de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
-    hosp: ["Heliconia spp.", "Musa spp."],
+    hosp: ["Musa spp.", "Heliconia spp."],
     part: ["frutos", "flores"],
     orig: ["CE", "PE", "PI", "SC"],
     dest: ["CE", "PE", "PI", "SC"],
@@ -388,7 +411,7 @@ var db = [
   //SIGATOKA NEGRA
   {
     desc: "Mudas Micropropagadas DE qualquer UF PARA qualquer UF",  //ok
-    hosp: ["Heliconia spp.", "Musa spp."],
+    hosp: ["Musa spp.", "Heliconia spp."],
     part: ["mudas"],
     orig: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
@@ -667,22 +690,22 @@ var db = [
   },
 
   //CANCRO CÍTRICO
-  /*
-  Área com Praga Ausente: BA, GO, TO
-  Área sob Erradicação ou Supressão : MG, RR
-  Área sob Sistema de Mitigação de Risco (SMR): MT,. MS, RS, SP
-  Área Livre: PA (Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha, Santarém)
-  */
+  
+  //Área com Praga Ausente: AM, BA, DF, GO, TO
+  //Área sob Erradicação ou Supressão : CE, MG, RR
+  //Área sob Sistema de Mitigação de Risco (SMR): MT, MS, RS, SP
+  //Área Livre: PA (Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha, Santarém)
+
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["frutos", "material de propagação"],
-    orig: ["BA", "GO", "TO"],
+    orig: [ "AM", "BA", "DF", "GO", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
     exig: [
-      "PTV."
+      "SEM EXIGÊNCIAS PARA O TRÂNSITO."
     ],
     leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
     link: "leg/IN37-2016.pdf",
@@ -706,7 +729,7 @@ var db = [
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF", //Arts. 39 e 40
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["frutos"],
-    orig: ["MG", "RR"],
+    orig: [ "CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
@@ -721,7 +744,7 @@ var db = [
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["material de propagação"],
-    orig: ["MG", "RR"],
+    orig: [ "CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
@@ -747,11 +770,27 @@ var db = [
     leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
     link: "leg/IN37-2016.pdf",
     proib: undefined
-  }, {
+  }, 
+  {
+    desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
+    hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
+    part: ["material de propagação"],
+    orig: ["MT", "MS", "RS", "SP", "SC"],
+    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
+    prag: "Xanthomonas citri subsp. citri",
+    pragc: "CANCRO CÍTRICO",
+    exig: [
+      "TRÃNSITO PROIBIDO"
+    ],
+    leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
+    link: "leg/IN37-2016.pdf",
+    proib: undefined
+  },
+  {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["frutos", "material de propagação"],
-    orig: ["AC", "AL", "AM", "AP", "CE", "DF", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
+    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
@@ -1078,13 +1117,7 @@ var hospedeiros = [
   { nomeVul: "Vimeiro Púrpura", nomeSci: "Salix purpurea" },
   { nomeVul: "Viola", nomeSci: "Viola sp." },
   { nomeVul: "Zingiberaceae (espécies desta família)", nomeSci: "Zingiberaceae (espécies desta família)" }
-];
-
-if (typeof module === 'object') {
-  exports.db = db
-  exports.hospedeiros = hospedeiros
-  exports.version = vsersion
-}
+];*/
 
 /*
 Citrus aurantium: laranja
@@ -1141,4 +1174,10 @@ TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
 
 ##Versão 15
 - Correção na regra  "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra" para incluir o SMR como opção.
+
+##Versão 16:
+- Inclusão da regra para Cancro Cítrico "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF" para material de propagação, sendo o trânsito proibido.
+- Amazonas e Distrito Federal passam de Área de Risco Desconhecido de Cancro Cítrico para Área com Ausência de Praga, conforme as Resoluções 14/2017 e 15/2017.
+- Ceará passa de Área de Risco Desconhecido de Cancro Cítrico para Área sob Erradicação ou Supressão, conforme a Resolução 13/2017.
+- DE Área com Cancro Cítrico Ausente PARA qualquer UF teve a exigência alterada de PTV para SEM EXIGÊNCIAS PARA O TRÂNSITO.
 */
